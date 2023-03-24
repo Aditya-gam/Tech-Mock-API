@@ -1,7 +1,11 @@
-import React from 'react'
+import React from "react";
+import Navbar from "./Navbar/Navbar";
 
 export default function PageNotFound() {
   return (
-    <div>PageNotFound</div>
-  )
+    <div>
+      <Navbar />
+      PageNotFound
+    </div>
+  );
 }

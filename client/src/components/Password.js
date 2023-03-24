@@ -9,6 +9,7 @@ import { passwordValidate } from "../helper/validate";
 import { verifyPassword } from "../helper/helper";
 import { useAuthStore } from "../store/store";
 import useFetch from "../hooks/fetch.hook"; // Custom Hook
+import Navbar from "./Navbar/Navbar";
 
 /** IMPORT STYLES */
 import styles from "../styles/Username.module.css";
@@ -57,6 +58,7 @@ export default function Password() {
 
   return (
     <div className="container mx-auto">
+      <Navbar />
       <Toaster position="top-center" reverseOrder={false}></Toaster>
 
       <div className="flex justify-center items-center h-screen">

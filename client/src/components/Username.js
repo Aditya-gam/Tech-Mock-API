@@ -6,6 +6,7 @@ import { useFormik } from "formik";
 
 /** IMPORT HELPERS */
 import { usernameValidate } from "../helper/validate";
+import Navbar from "./Navbar/Navbar";
 
 /** IMPORT STORE */
 import { useAuthStore } from "../store/store";
@@ -36,6 +37,7 @@ export default function Username() {
 
   return (
     <div className="container mx-auto">
+      <Navbar />
       <Toaster position="top-center" reverseOrder={false}></Toaster>
 
       <div className="flex justify-center items-center h-screen">

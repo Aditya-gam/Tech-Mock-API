@@ -8,6 +8,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { profileValidation } from "../helper/validate";
 import convertToBase64 from "../helper/convert";
 import { updateUser } from "../helper/helper";
+import Navbar from "./Navbar/Navbar";
 
 /** IMPORT HOOKS */
 import useFetch from "../hooks/fetch.hook";
@@ -75,6 +76,7 @@ export default function Profile() {
 
   return (
     <div className="container mx-auto">
+      <Navbar />
       <Toaster position="top-center" reverseOrder={false}></Toaster>
 
       <div className="flex justify-center items-center h-screen">
