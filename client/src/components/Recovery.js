@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 /** IMPORT HELPERS */
 import { generateOTP, verifyOTP } from "../helper/helper";
+import Navbar from "./Navbar";
 
 /** IMPORT STORE */
 import { useAuthStore } from "../store/store";
@@ -55,6 +56,7 @@ export default function Recovery() {
 
   return (
     <div className="container mx-auto">
+      <Navbar />
       <Toaster position="top-center" reverseOrder={false}></Toaster>
 
       <div className="flex justify-center items-center h-screen">
