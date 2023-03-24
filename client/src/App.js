@@ -10,7 +10,9 @@ import Profile from "./components/Profile";
 import Recovery from "./components/Recovery";
 import Reset from "./components/Reset";
 import PageNotFound from "./components/PageNotFound";
-import Navbar from "./components/Navbar/Navbar";
+// import Navbar from "./components/Navbar/Navbar";
+import Form from "./components/Form";
+import Thank from "./components/Thank";
 
 /** auth middleware */
 import { AuthorizeUser, ProtectRoute } from "./middleware/auth";
@@ -20,10 +22,9 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: (
-      <div>
-        <Navbar />
-        Root Element
-      </div>
+      <AuthorizeUser>
+        <Form />
+      </AuthorizeUser>
     ),
   },
   {
@@ -57,6 +58,10 @@ const router = createBrowserRouter([
   {
     path: "/reset",
     element: <Reset />,
+  },
+  {
+    path: "/thanks",
+    element: <Thank />,
   },
   {
     path: "*",
