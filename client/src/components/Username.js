@@ -6,7 +6,7 @@ import { useFormik } from "formik";
 
 /** IMPORT HELPERS */
 import { usernameValidate } from "../helper/validate";
-import Navbar from "./Navbar";
+import Navbar from "./Navbar/Navbar";
 
 /** IMPORT STORE */
 import { useAuthStore } from "../store/store";

@@ -9,7 +9,7 @@ import { passwordValidate } from "../helper/validate";
 import { verifyPassword } from "../helper/helper";
 import { useAuthStore } from "../store/store";
 import useFetch from "../hooks/fetch.hook"; // Custom Hook
-import Navbar from "./Navbar";
+import Navbar from "./Navbar/Navbar";
 
 /** IMPORT STYLES */
 import styles from "../styles/Username.module.css";

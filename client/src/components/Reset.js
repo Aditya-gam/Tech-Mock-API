@@ -7,7 +7,7 @@ import { useNavigate, Navigate } from "react-router-dom";
 /** IMPORT HELPERS */
 import { resetPasswordValidation } from "../helper/validate";
 import { resetPassword } from "../helper/helper";
-import Navbar from "./Navbar";
+import Navbar from "./Navbar/Navbar";
 
 /** IMPORT STORE */
 import { useAuthStore } from "../store/store";

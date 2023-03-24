@@ -8,7 +8,7 @@ import { useFormik } from "formik";
 import { registerValidation } from "../helper/validate";
 import convertToBase64 from "../helper/convert";
 import { registerUser } from "../helper/helper";
-import Navbar from "./Navbar";
+import Navbar from "./Navbar/Navbar";
 
 /** IMPORT STYLES */
 import styles from "../styles/Username.module.css";
@@ -113,7 +113,7 @@ export default function Register() {
             <div className="text-center py-4">
               <span className="text-gray-500">
                 Already Register?{" "}
-                <Link className="text-red-500" to="/">
+                <Link className="text-red-500" to="/username">
                   Login Now
                 </Link>
               </span>

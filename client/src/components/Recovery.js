@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 /** IMPORT HELPERS */
 import { generateOTP, verifyOTP } from "../helper/helper";
-import Navbar from "./Navbar";
+import Navbar from "./Navbar/Navbar";
 
 /** IMPORT STORE */
 import { useAuthStore } from "../store/store";

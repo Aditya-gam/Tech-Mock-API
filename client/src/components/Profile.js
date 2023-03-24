@@ -8,7 +8,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { profileValidation } from "../helper/validate";
 import convertToBase64 from "../helper/convert";
 import { updateUser } from "../helper/helper";
-import Navbar from "./Navbar";
+import Navbar from "./Navbar/Navbar";
 
 /** IMPORT HOOKS */
 import useFetch from "../hooks/fetch.hook";
