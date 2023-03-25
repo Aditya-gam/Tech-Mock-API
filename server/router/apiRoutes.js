@@ -2,11 +2,12 @@ import { Router } from "express";
 const apiRouter = Router();
 
 /** import all controllers */
+import * as apiController from "../controllers/apiController";
 
 /** POST Methods */
-apiRouter.route("/saverequest").post();
+apiRouter.route("/createApiData").post(apiController.createApiData);
 /** GET Methods */
-apiRouter.route("/geturl").get();
+apiRouter.route("/getApiData").get(apiController.getApiData);
 
 /** PUT Methods */
 
