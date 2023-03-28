@@ -1,4 +1,4 @@
-import ApiModel from "../models/Api.models.js";
+import ApiModel from "../model/Api.model.js";
 
 // Controller function to store data in the database
 export async function createApiData(req, res) {
@@ -36,6 +36,17 @@ export async function getApiData(req, res) {
     // Return an error response if something goes wrong
     res.status(500).send({ error: error.message });
   }
+  // const { _id } = req.params;
+  // try {
+  //   const data = await Api.findById(_id);
+  //   if (!data) {
+  //     return res.status(404).json({ error: 'Data not found' });
+  //   }
+  //   return res.status(200).json({ data });
+  // } catch (error) {
+  //   console.error(error);
+  //   return res.status(500).json({ error: 'Internal server error' });
+  // }
 }
 
 // Controller function to search for data in the database
