@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useFormik } from "formik";
 
 import Navbar from "./Navbar/Navbar";
 // import TestNavbar from "./Navbar/TestNavbar";
 
 const Form = () => {
+  const navigate = useNavigate(); // Navigate hook
   const [inputFields, setInputFields] = useState([
     {
       parameter: "",
@@ -35,12 +37,27 @@ const Form = () => {
     setInputFields(list);
   };
 
+  /** FORM VALIDATION AND SUBMIT */
+  const formik = useFormik({
+    initialValues: {
+      username: "",
+    },
+    validateOnBlur: false,
+    validateOnChange: false,
+    onSubmit: async (values) => {
+      navigate("/thanks");
+    },
+  });
+
   return (
     <div className="form-wrap ">
       {/* <TestNavbar /> */}
       <Navbar />
       <div className="w-full max-w-xl m-auto mt-10 ">
-        <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 font-serif ">
+        <form
+          className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 font-serif "
+          onSubmit={formik.handleSubmit}
+        >
           <div className="mb-4">
             <label
               className="block text-gray-700 text-lg font-bold mb-2"
@@ -49,7 +66,10 @@ const Form = () => {
               Select the request type
             </label>
             <div className="inline-block relative w-64">
-              <select className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+              <select
+                {...formik.getFieldProps("request_type")}
+                className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+              >
                 <option disabled selected hidden value="">
                   Request Type
                 </option>
@@ -79,7 +99,10 @@ const Form = () => {
               Select the API
             </label>
             <div className="inline-block relative w-64">
-              <select className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+              <select
+                {...formik.getFieldProps("api_name")}
+                className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+              >
                 <option disabled hidden selected value="">
                   API Name
                 </option>
@@ -107,6 +130,7 @@ const Form = () => {
               Endpoint URL
             </label>
             <input
+              {...formik.getFieldProps("endpoint_url")}
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="url"
               type="text"
@@ -177,12 +201,13 @@ const Form = () => {
             Response body
           </label>
           <textarea
+            {...formik.getFieldProps("response_body")}
             id="message"
             rows="4"
             class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500  dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           ></textarea>
 
-          <Link to="/thanks">
+          <Link>
             <button
               type="submit "
               className="bg-gray-500 py-2 mt-6 px-6 text-white rounded-xl shadow-md"
