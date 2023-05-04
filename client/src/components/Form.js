@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
+import * as Yup from "yup";
+import jwt_decode from "jwt-decode";
+import axios from "axios";
 
 import Navbar from "./Navbar/Navbar";
 // import TestNavbar from "./Navbar/TestNavbar";
@@ -13,6 +16,12 @@ const Form = () => {
       Value: "",
     },
   ]);
+
+  const validationSchema = Yup.object().shape({
+    requestType: Yup.string().required("Request Type is required"),
+    apiName: Yup.string(),
+    endpointUrl: Yup.string().required("Endpoint URL is required"),
+  });
 
   const addInputFields = () => {
     setInputFields([
@@ -37,15 +46,33 @@ const Form = () => {
     setInputFields(list);
   };
 
+  const getUserID = () => {
+    const token = localStorage.getItem("token"); // get token from localstorage
+    if (!token) return Promise.reject("Cannot find Token"); // if token not found
+    let decode = jwt_decode(token); // decode token
+    return decode.userId;
+  };
+
   /** FORM VALIDATION AND SUBMIT */
   const formik = useFormik({
     initialValues: {
-      username: "",
+      requestType: "",
+      apiName: "",
+      endpointUrl: "",
+      response_body: "",
     },
+    validate: validationSchema,
     validateOnBlur: false,
     validateOnChange: false,
     onSubmit: async (values) => {
-      navigate("/thanks");
+      const userId = await getUserID();
+      const payload = { userId, ...values };
+      try {
+        await axios.post("/api/createApiData", payload);
+        navigate("/thanks");
+      } catch (error) {
+        console.log(error);
+      }
     },
   });
 
@@ -67,7 +94,7 @@ const Form = () => {
             </label>
             <div className="inline-block relative w-64">
               <select
-                {...formik.getFieldProps("request_type")}
+                {...formik.getFieldProps("requestType")}
                 className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
               >
                 <option disabled selected hidden value="">
@@ -100,7 +127,7 @@ const Form = () => {
             </label>
             <div className="inline-block relative w-64">
               <select
-                {...formik.getFieldProps("api_name")}
+                {...formik.getFieldProps("apiName")}
                 className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
               >
                 <option disabled hidden selected value="">
@@ -130,7 +157,7 @@ const Form = () => {
               Endpoint URL
             </label>
             <input
-              {...formik.getFieldProps("endpoint_url")}
+              {...formik.getFieldProps("endpointUrl")}
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="url"
               type="text"
