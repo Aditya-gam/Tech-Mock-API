@@ -20,7 +20,7 @@ const Thank = () => {
         The request has been submitted succesfully
       </p>
       <p className="text-lg font-mono">
-        You can make a request to: http://localhost:8080/req/${getUserID()}/{" "}
+        You can make a request to: http://localhost:8080/req/{getUserID()}/{" "}
         <br />
         Add your endpoint after last slash
       </p>
