@@ -6,6 +6,7 @@ import dotenv from "dotenv";
 import connect from "./database/conn.js";
 import authRouter from "./router/authRoute.js";
 import apiRouter from "./router/apiRoutes.js";
+import reqRouter from "./router/reqRoutes.js";
 
 const app = express();
 
@@ -24,6 +25,7 @@ app.get("/", (req, res) => {
 /** api routes */
 app.use("/auth", authRouter);
 app.use("/api", apiRouter);
+app.use("/req", reqRouter);
 
 /** start server only when we have valid connection */
 const port = process.env.PORT || 9000;

@@ -45,7 +45,7 @@ export default function Password() {
         let { token } = res.data;
         // console.log(token);
         localStorage.setItem("token", token);
-        navigate("/profile");
+        navigate("/apiform");
       });
     },
   });

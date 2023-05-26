@@ -3,8 +3,9 @@ import mongoose from "mongoose";
 const requestTypes = ["GET", "POST", "PUT", "PATCH", "DELETE"];
 
 export const ApiSchema = new mongoose.Schema({
-  _id: {
-    type: mongoose.Schema.Types.ObjectId,
+  userId: {
+    type: String,
+    unique: false,
     // auto: true,
   },
   request: {

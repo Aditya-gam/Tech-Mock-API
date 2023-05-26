@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
-import axios from "axios";
+// import axios from "axios";
 import jwt_decode from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "../helper/axios";
@@ -38,7 +38,7 @@ const MyForm = () => {
     // e.preventDefault();
     try {
       const userId = await getUserID();
-      const payload = { ...values, userId };
+      const payload = { userId, ...values };
       console.log(payload);
       alert("Form submitted successfully", payload);
       await axiosInstance.post("/api/createApiData", payload);

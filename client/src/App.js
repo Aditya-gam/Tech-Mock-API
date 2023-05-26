@@ -28,6 +28,14 @@ const router = createBrowserRouter([
     ),
   },
   {
+    path: "/apiform",
+    element: (
+      <AuthorizeUser>
+        <Form />
+      </AuthorizeUser>
+    ),
+  },
+  {
     path: "/username",
     element: <Username />,
   },
