@@ -8,7 +8,7 @@ Please follow the steps below to install and run the application:
 1. Clone the repository:
 
    ```bash
-   git clone [https://github.com/your-username/your-repo.git](https://github.com/Aditya-gam/Tech-Mock-API.git)
+   git clone https://github.com/Aditya-gam/Tech-Mock-API.git
 
 2. Navigate to the project root directory:
 
